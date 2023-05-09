@@ -131,7 +131,7 @@ def locarVeiculo():
         if i == usuario and j['senha'] == senha:
             placa = input("Digite a placa do veículo a ser alugado: ").upper()
             devolucao = int(input("Por quantos dias você deseja alugar o veículo: "))
-            data_devolucao = datetime.now() - timedelta(days=devolucao)
+            data_devolucao = datetime.now() + timedelta(days=devolucao)
             if placa in veiculos:
                 if veiculos[placa]["disponivel"]:
                   veiculos[placa]["disponivel"] = False
