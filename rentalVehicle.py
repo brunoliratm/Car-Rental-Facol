@@ -37,11 +37,12 @@ def userMenu():
 def cadastroUsuario():
     nome= input("Digite o nome do usuário: ").upper()
     email= input("Digite o e-mail do usuário: ")
+    senha= input("Digite a senha do usuário: ")
 
     if nome in usuarios:
         print("Usuário já cadastrado.")
     else:
-        usuarios[nome] = {'email': email}
+        usuarios[nome] = {'email': email, 'senha': senha}
         print(f"Usuário {nome} adicionado com sucesso.")
     time.sleep(2)
     os.system('cls' if os.name == 'nt' else 'clear')
@@ -125,11 +126,12 @@ def removerVeiculo():
 #locar veiculo
 def locarVeiculo():
     usuario=input("Digite o seu nome de usuário: ").upper()
-    for i in usuarios:
-        if i==usuario :
+    senha = input("Digite a sua senha: ")
+    for i, j in usuarios.items():
+        if i == usuario and j['senha'] == senha:
             placa = input("Digite a placa do veículo a ser alugado: ").upper()
             devolucao = int(input("Por quantos dias você deseja alugar o veículo: "))
-            data_devolucao = datetime.now() + timedelta(days=devolucao)
+            data_devolucao = datetime.now() - timedelta(days=devolucao)
             if placa in veiculos:
                 if veiculos[placa]["disponivel"]:
                   veiculos[placa]["disponivel"] = False
