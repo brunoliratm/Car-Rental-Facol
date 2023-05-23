@@ -152,7 +152,7 @@ def mostrarVeiculos():
     print("Lista de veículos cadastrados:")
     for placa, dados in veiculos.items():
         modelo = dados["modelo"]
-        disponivel = "Disponível" if dados["disponivel"] else "Alugado até " + dados["data_devolucao"].strftime("%d/%m/%Y")
+        disponivel = "Disponível" if dados["disponivel"] else "Alugado até " + dados["data_devolucao"].strftime("%d/%m/%Y, %H:%M:%S")
         print(f"Placa: {placa} - Modelo: {modelo} - Status: {disponivel}")
     time.sleep(4)
     os.system('cls' if os.name == 'nt' else 'clear')
